@@ -6,8 +6,8 @@ interface MapProps {
 }
 
 const containerStyle = {
-  width: '400px',
-  height: '400px'
+  width: '50vw',
+  height: '50vh'
 };
 
 export default function Map({ center }: MapProps): JSX.Element {
@@ -31,7 +31,6 @@ export default function Map({ center }: MapProps): JSX.Element {
   }, [])
 
   return isLoaded ? (
-    // <div className="h-[100vh] border flex justify-center items-center">
     <GoogleMap
       mapContainerStyle={containerStyle}
       center={center}
@@ -39,9 +38,7 @@ export default function Map({ center }: MapProps): JSX.Element {
       onLoad={onLoad}
       onUnmount={onUnmount}
     >
-      { /* Child components, such as markers, info windows, etc. */}
       <Marker position={center}></Marker>
     </GoogleMap>
-    // </div>
   ) : <></>;
 }
