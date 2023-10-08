@@ -7,6 +7,7 @@ let markers = [
   { lat: 40.7128, lng: -74.006 },
   { lat: 34.0522, lng: -118.2437 },
   { lat: 51.5074, lng: -0.1278 },
+  { lat: 42.6512, lng: -83.1163 },
 ]; //These are the places where all of the stores are (continue adding stores)
 
 export default function Home() {
