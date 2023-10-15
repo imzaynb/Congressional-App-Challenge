@@ -1,5 +1,4 @@
-'use client'
-
+import Image from 'next/image'
 import Map from "@/components/map";
 import { useUser, SignInButton, SignUpButton } from "@clerk/nextjs";
 
@@ -29,5 +28,4 @@ export default function Home() {
     </>
   )
 }
-
 
