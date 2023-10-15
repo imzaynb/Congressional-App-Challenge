@@ -7,8 +7,9 @@ interface MapProps {
 }
 
 const containerStyle = {
-  width: "400px",
-  height: "400px",
+  width: "70%",
+  height: "calc(100vh - 66px)", //66px is the height of the header so get the height of the whole screen and subtract the header
+  float: "right",
 };
 
 export default function Map({ center, locations }: MapProps): JSX.Element {
@@ -21,39 +22,45 @@ export default function Map({ center, locations }: MapProps): JSX.Element {
   const [markers, setMarkers] = useState<any>([]);
 
   useEffect(() => {
-    if (isLoaded && map) {
+      if (isLoaded && map) {
+        //Dialog box
+        //If map is loaded, then ask the user for their location
+        navigator.geolocation.getCurrentPosition(position => {
+          const { latitude, longitude } = position.coords;
+          map.setCenter(new google.maps.LatLng(latitude, longitude)); //Janky set the new center of the map
+        })
+        //Dialog box end
 
-      const geocoder = new window.google.maps.Geocoder();
+        const geocoder = new window.google.maps.Geocoder();
+        const updatedMarkers: { lat: number; lng: number; }[] = [];
 
-      const updatedMarkers: { lat: number; lng: number; }[] = [];
+        const geocodeLocation = (location: string | { lat: number; lng: number; }) => {
+          if (typeof location === "string") {
+            // Location is an address, so we need to geocode it
+            geocoder.geocode({ address: location }, (results, status) => {
+              if (!results) return;
+              if (status === "OK" && results[0]) { // There is a slight problem here where if results ends up being null then bad stuff happens
+                const { lat, lng } = results[0].geometry.location;
+                updatedMarkers.push({ lat: lat(), lng: lng() });
+              } else {
+                console.error("Geocoding failed for address: ", location);
+              }
+            });
+          } else {
+            // Location is already in lat/lng format, so add it directly
+            updatedMarkers.push(location);
+          }
+          setMarkers(updatedMarkers);
+        };
 
-      const geocodeLocation = (location: string | { lat: number; lng: number; }) => {
-        if (typeof location === "string") {
-          // Location is an address, so we need to geocode it
-          geocoder.geocode({ address: location }, (results, status) => {
-            if (!results) return;
-            if (status === "OK" && results[0]) { // There is a slight problem here where if results ends up being null then bad stuff happens
-              const { lat, lng } = results[0].geometry.location;
-              updatedMarkers.push({ lat: lat(), lng: lng() });
-            } else {
-              console.error("Geocoding failed for address: ", location);
-            }
-          });
-        } else {
-          // Location is already in lat/lng format, so add it directly
-          updatedMarkers.push(location);
-        }
-        setMarkers(updatedMarkers);
-      };
+        // Clear existing markers
+        setMarkers([]);
 
-      // Clear existing markers
-      setMarkers([]);
-
-      // Geocode each location and add it to the markers array
-      locations.forEach((location) => {
-        geocodeLocation(location);
-      });
-      console.log(markers)
+        // Geocode each location and add it to the markers array
+        locations.forEach((location) => {
+          geocodeLocation(location);
+        });
+        console.log(markers)
     }
   }, [isLoaded, map, locations]);
 
@@ -61,9 +68,6 @@ export default function Map({ center, locations }: MapProps): JSX.Element {
     if (mapInstance) {
 
       const bounds = new window.google.maps.LatLngBounds(center);
-
-      // Fit the map to the specified bounds.
-      mapInstance.fitBounds(bounds);
 
       // Set the map instance in the component's state for future use.
       setMap(mapInstance);
@@ -81,7 +85,7 @@ export default function Map({ center, locations }: MapProps): JSX.Element {
     <GoogleMap
       mapContainerStyle={containerStyle}
       center={center}
-      zoom={10}
+      zoom={20}
       onLoad={onLoad}
       onUnmount={onUnmount}
     >
