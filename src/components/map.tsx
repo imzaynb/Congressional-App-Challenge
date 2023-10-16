@@ -1,5 +1,5 @@
 import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
-import { useCallback, useState, useEffect, SetStateAction } from "react";
+import { useCallback, useState, useEffect} from "react";
 
 interface MapProps {
   center: { lat: number; lng: number };
@@ -28,6 +28,13 @@ export default function Map({ center, locations }: MapProps): JSX.Element {
         navigator.geolocation.getCurrentPosition(position => {
           const { latitude, longitude } = position.coords;
           map.setCenter(new google.maps.LatLng(latitude, longitude)); //Janky set the new center of the map
+          //Setting a marker at their location with a home icon
+          const image = "https://imageupload.io/ib/ffAkQ56AA4u0iaH_1697423481.png";
+          const marker= new google.maps.Marker({
+            position: { lat: latitude, lng: longitude },
+            map,
+            icon: image,
+          });
         })
         //Dialog box end
 
@@ -66,10 +73,6 @@ export default function Map({ center, locations }: MapProps): JSX.Element {
 
   const onLoad = useCallback((mapInstance: any) => {
     if (mapInstance) {
-
-      const bounds = new window.google.maps.LatLngBounds(center);
-
-      // Set the map instance in the component's state for future use.
       setMap(mapInstance);
     }
   },
@@ -85,7 +88,7 @@ export default function Map({ center, locations }: MapProps): JSX.Element {
     <GoogleMap
       mapContainerStyle={containerStyle}
       center={center}
-      zoom={20}
+      zoom={14}
       onLoad={onLoad}
       onUnmount={onUnmount}
     >
