@@ -7,7 +7,7 @@ interface MapProps {
 }
 
 const containerStyle = {
-  width: "70%",
+  width: "75%",
   height: "calc(100vh - 66px)", //66px is the height of the header so get the height of the whole screen and subtract the header
   float: "right",
 };
