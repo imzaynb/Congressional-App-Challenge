@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="659865b9-e98e-4bcb-8dd7-ce0166d08175" name="Changes" comment="Home Icon For Users">
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+    <list default="true" id="659865b9-e98e-4bcb-8dd7-ce0166d08175" name="Changes" comment="Card View For Businesses">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/map.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/map.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +70,9 @@
       <option name="presentableId" value="Default" />
       <updated>1697393526811</updated>
       <workItem from="1697393531889" duration="16058000" />
-      <workItem from="1697490384865" duration="5915000" />
+      <workItem from="1697490384865" duration="7410000" />
+      <workItem from="1697713352523" duration="227000" />
+      <workItem from="1697713763586" duration="1457000" />
     </task>
     <task id="LOCAL-00001" summary="Pulled from Main">
       <option name="closed" value="true" />
@@ -98,7 +98,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697423813344</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Card View For Businesses">
+      <option name="closed" value="true" />
+      <created>1697508475750</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1697508475750</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -131,6 +139,7 @@
     <MESSAGE value="Pulled from Main" />
     <MESSAGE value="User Location Permission and Removed Map Refreshing" />
     <MESSAGE value="Home Icon For Users" />
-    <option name="LAST_COMMIT_MESSAGE" value="Home Icon For Users" />
+    <MESSAGE value="Card View For Businesses" />
+    <option name="LAST_COMMIT_MESSAGE" value="Card View For Businesses" />
   </component>
 </project>

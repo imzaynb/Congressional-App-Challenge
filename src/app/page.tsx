@@ -38,7 +38,7 @@ export default function Home() {
             )}
           </div>
           <div>
-            <div className="overflow-hidden overflow-y-scroll">
+            <div className="overflow-y-scroll top-[66px] bottom-0 fixed w-1/4">
               <LocationCard location={"Some Location"} information={"Some random information"}/>
               <LocationCard location={"Some Location"} information={"Some random information"}/>
               <LocationCard location={"Some Location"} information={"Some random information"}/>
