@@ -1,7 +1,6 @@
 "use client";
 
 import { ModeToggle } from "@/components/mode-toggle";
-
 import { useUser, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs"
 import Link from "next/link";
 import { Button } from "@/components/ui/button";

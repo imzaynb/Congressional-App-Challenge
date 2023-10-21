@@ -1,8 +1,16 @@
 import * as React from "react"
 import { Button } from "@/components/ui/button"
 import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card"
+import getBusinessInfo from "@/components/location-repeater";
 
-export function LocationCard({location, information}) {
+interface LocationCardProps {
+    location: string,
+    information: string,
+}
+
+export function LocationCard({location, information}: LocationCardProps) {
+    //Testing call of function
+    getBusinessInfo();
     return (
         <Card className="">
             <CardHeader>
