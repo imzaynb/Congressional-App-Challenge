@@ -7,10 +7,15 @@ import {LocationCard} from "@/components/location-card";
 
 const center = { lat: 42.65123562471941, lng: -83.11635242753731 };
 let markers = [
-  { lat: 40.7128, lng: -74.006 },
-  { lat: 34.0522, lng: -118.2437 },
-  { lat: 51.5074, lng: -0.1278 },
-  { lat: 42.6512, lng: -83.1163 },
+  { lat: 42.54492084597748, lng: -83.21533837375769 },
+  { lat: 42.4903744430497, lng: -83.13492142011665 },
+  { lat: 42.55730876255883, lng: -83.16016429229931 },
+  { lat: 42.52998004090962, lng: -83.11867423887077 },
+  { lat: 42.56382815278382, lng: -83.16193557325589 },
+  { lat: 42.674320259204315, lng: -83.01280435235884 },
+  { lat: 42.6482297750514, lng: -83.24513184441743 },
+  { lat: 42.62827189565542, lng: -83.01076665791079 },
+  { lat: 42.581134271907786, lng: -83.24376254441958 },
 ]; //These are the places where all of the stores are (continue adding stores)
 
 export default function Home() {
@@ -40,14 +45,7 @@ export default function Home() {
           </div>
           <div>
             <div className="overflow-y-scroll scrollbar top-[66px] bottom-0 fixed w-1/4">
-              <LocationCard location={"Some Location"} information={"Some random information"}/>
-              <LocationCard location={"Some Location"} information={"Some random information"}/>
-              <LocationCard location={"Some Location"} information={"Some random information"}/>
-              <LocationCard location={"Some Location"} information={"Some random information"}/>
-              <LocationCard location={"Some Location"} information={"Some random information"}/>
-              <LocationCard location={"Some Location"} information={"Some random information"}/>
-              <LocationCard location={"Some Location"} information={"Some random information"}/>
-              <LocationCard location={"Some Location"} information={"Some random information"}/>
+              <LocationCard lat={42.54492084597748} lng={-83.21533837375769}/>
             </div>
           </div>
         </main>

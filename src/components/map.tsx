@@ -1,6 +1,5 @@
-import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
+import { GoogleMap, Marker, useJsApiLoader, } from "@react-google-maps/api";
 import { useCallback, useState, useEffect} from "react";
-
 interface MapProps {
   center: { lat: number; lng: number };
   locations: (string | { lat: number; lng: number })[]; // Allow either addresses or coordinates
@@ -96,6 +95,7 @@ export default function Map({ center, locations }: MapProps): JSX.Element {
       {markers.map((marker: any, index: any) => (
         <Marker key={index} position={marker} />
       ))}
+
     </GoogleMap>
   ) : (
     <></>

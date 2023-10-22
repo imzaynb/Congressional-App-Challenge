@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="659865b9-e98e-4bcb-8dd7-ce0166d08175" name="Changes" comment="Google Places API Implemented" />
+    <list default="true" id="659865b9-e98e-4bcb-8dd7-ce0166d08175" name="Changes" comment="Google Places API Implemented">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/location-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/location-card.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/location-repeater.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/location-repeater.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/map.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/map.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,6 +82,9 @@
       <workItem from="1697713763586" duration="2887000" />
       <workItem from="1697844306209" duration="3667000" />
       <workItem from="1697852128793" duration="4738000" />
+      <workItem from="1697856933429" duration="226000" />
+      <workItem from="1697916308597" duration="7621000" />
+      <workItem from="1697979030321" duration="3703000" />
     </task>
     <task id="LOCAL-00001" summary="Pulled from Main">
       <option name="closed" value="true" />
@@ -123,7 +134,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697856737881</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Google Places API Implemented">
+      <option name="closed" value="true" />
+      <created>1697856959489</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1697856959489</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
