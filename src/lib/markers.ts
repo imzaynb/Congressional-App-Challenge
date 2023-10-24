@@ -1,8 +1,9 @@
-export function updateMarkers(markers: any, newMarker: string | { lat: number; lng: number; }) {
+import { LatLng } from "@/types/latlng";
 
+export function updateMarkers(markers: LatLng[], newMarker: string | LatLng) {
   const geocoder = new window.google.maps.Geocoder();
 
-  let updatedMarkers: { lat: number; lng: number; } = { lat: 0, lng: 0 }
+  let updatedMarkers: LatLng = { lat: 0, lng: 0 };
 
   if (typeof newMarker === "string") {
     // Location is an address, so we need to geocode it
@@ -18,6 +19,7 @@ export function updateMarkers(markers: any, newMarker: string | { lat: number; l
     // Location is already in lat/lng format, so add it directly
     updatedMarkers = newMarker;
   }
+
   markers = [...markers, updatedMarkers];
   return markers;
 }

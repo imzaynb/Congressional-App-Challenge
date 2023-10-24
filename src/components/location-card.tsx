@@ -5,18 +5,18 @@ import getBusinessInfo from "@/components/location-repeater";
 import { useEffect, useState } from "react";
 import { getAddressFromLatLng } from "@/lib/geocode";
 import { roundToPlace } from "@/lib/utils";
+import { LatLng } from "@/types/latlng";
 
 interface LocationCardProps {
-  lat: number,
-  lng: number,
+  latlng: LatLng
 }
 
-export function LocationCard({ lat, lng }: LocationCardProps) {
+export function LocationCard({ latlng }: LocationCardProps) {
   const [address, setAddress] = useState("");
 
   useEffect(() => {
     const obtainAddress = async () => {
-      const addr = await getAddressFromLatLng(lat, lng);
+      const addr = await getAddressFromLatLng(latlng);
       if (addr) {
         setAddress(addr);
       }
@@ -28,7 +28,7 @@ export function LocationCard({ lat, lng }: LocationCardProps) {
     <Card className="">
       <CardHeader>
         <CardTitle>{address}</CardTitle>
-        <CardDescription>{`${roundToPlace(lat, 4)}, ${roundToPlace(lng, 4)}`}</CardDescription>
+        <CardDescription>{`${roundToPlace(latlng.lat, 4)}, ${roundToPlace(latlng.lng, 4)}`}</CardDescription>
       </CardHeader>
       <CardContent>
         <div>

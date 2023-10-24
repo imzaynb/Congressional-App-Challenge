@@ -1,0 +1,1 @@
+export const HOME_ICON = "https://imageupload.io/ib/ffAkQ56AA4u0iaH_1697423481.png";

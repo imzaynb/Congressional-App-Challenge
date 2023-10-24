@@ -15,7 +15,10 @@ const Header = () => {
         {isSignedIn ? (
           <div className="ml-2">
             <Button variant="link">
-              <Link href="/map">Map</Link>
+              <Link href="/add">Add Discounts</Link>
+            </Button>
+            <Button variant="link">
+              <Link href="/settings">Settings</Link>
             </Button>
           </div>
         ) : (
