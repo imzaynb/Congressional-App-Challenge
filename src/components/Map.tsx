@@ -1,14 +1,14 @@
-import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
-import { useCallback, useState, useEffect, SetStateAction } from "react";
-
+import { GoogleMap, Marker, useJsApiLoader, } from "@react-google-maps/api";
+import { useCallback, useState, useEffect} from "react";
 interface MapProps {
   center: { lat: number; lng: number };
   locations: (string | { lat: number; lng: number })[]; // Allow either addresses or coordinates
 }
 
 const containerStyle = {
-  width: "400px",
-  height: "400px",
+  width: "75%",
+  height: "calc(100vh - 66px)", //66px is the height of the header so get the height of the whole screen and subtract the header
+  float: "right",
 };
 
 export default function Map({ center, locations }: MapProps): JSX.Element {
@@ -18,60 +18,67 @@ export default function Map({ center, locations }: MapProps): JSX.Element {
   });
 
   const [map, setMap] = useState(null);
-  const [markers, setMarkers] = useState([]);
+  const [markers, setMarkers] = useState<any>([]);
 
+  // Show the markers on the map
   useEffect(() => {
-    if (isLoaded && map) {
-
-      const geocoder = new window.google.maps.Geocoder();
-
-      const updatedMarkers: { lat: number; lng: number; }[] = [];
-
-      const geocodeLocation = (location: string | { lat: number; lng: number; }) => {
-        if (typeof location === "string") {
-          // Location is an address, so we need to geocode it
-          geocoder.geocode({ address: location }, (results, status) => {
-            if (status === "OK" && results[0]) { // There is a slight problem here where if results ends up being null then bad stuff happens
-              const { lat, lng } = results[0].geometry.location;
-              updatedMarkers.push({ lat: lat(), lng: lng() });
-            } else {
-              console.error("Geocoding failed for address: ", location);
-            }
+      if (isLoaded && map) {
+        //Dialog box
+        //If map is loaded, then ask the user for their location
+        navigator.geolocation.getCurrentPosition(position => {
+          const { latitude, longitude } = position.coords;
+          map.setCenter(new google.maps.LatLng(latitude, longitude)); //Janky set the new center of the map
+          //Setting a marker at their location with a home icon
+          const image = "https://imageupload.io/ib/ffAkQ56AA4u0iaH_1697423481.png";
+          const marker= new google.maps.Marker({
+            position: { lat: latitude, lng: longitude },
+            map,
+            icon: image,
           });
-        } else {
-          // Location is already in lat/lng format, so add it directly
-          updatedMarkers.push(location);
-        }
-        setMarkers(updatedMarkers);
-      };
+        })
+        //Dialog box end
 
-      // Clear existing markers
-      setMarkers([]);
+        const geocoder = new window.google.maps.Geocoder();
+        const updatedMarkers: { lat: number; lng: number; }[] = [];
 
-      // Geocode each location and add it to the markers array
-      locations.forEach((location) => {
-        geocodeLocation(location);
-      });
-      console.log(markers)
+        const geocodeLocation = (location: string | { lat: number; lng: number; }) => {
+          // Location is an address, so we need to geocode it
+          if (typeof location === "string") {
+            geocoder.geocode({ address: location }, (results, status) => {
+              if (!results) return;
+              if (status === "OK" && results[0]) { // There is a slight problem here where if results ends up being null then bad stuff happens
+                const { lat, lng } = results[0].geometry.location;
+                updatedMarkers.push({ lat: lat(), lng: lng() });
+              } else {
+                console.error("Geocoding failed for address: ", location);
+              }
+            });
+          } else {
+            // Location is already in lat/lng format, so add it directly
+            updatedMarkers.push(location);
+          }
+          setMarkers(updatedMarkers);
+        };
+
+        // Clear existing markers
+        setMarkers([]);
+
+        // Geocode each location and add it to the markers array
+        locations.forEach((location) => {
+          geocodeLocation(location);
+        });
+        console.log(markers)
     }
   }, [isLoaded, map, locations]);
 
-  const onLoad = useCallback(
-    function initializeMap(mapInstance) {
-      if (mapInstance) {
-  
-        const bounds = new window.google.maps.LatLngBounds(center);
-  
-        // Fit the map to the specified bounds.
-        mapInstance.fitBounds(bounds);
-  
-        // Set the map instance in the component's state for future use.
-        setMap(mapInstance);
-      }
-    },
+  const onLoad = useCallback((mapInstance: any) => {
+    if (mapInstance) {
+      setMap(mapInstance);
+    }
+  },
     [center]
   );
-  
+
 
   const onUnmount = useCallback(function callback(map: any) {
     setMap(null);
@@ -81,14 +88,15 @@ export default function Map({ center, locations }: MapProps): JSX.Element {
     <GoogleMap
       mapContainerStyle={containerStyle}
       center={center}
-      zoom={10}
+      zoom={14}
       onLoad={onLoad}
       onUnmount={onUnmount}
     >
       {/* Render markers */}
-      {markers.map((marker, index) => (
+      {markers.map((marker: any, index: any) => (
         <Marker key={index} position={marker} />
       ))}
+
     </GoogleMap>
   ) : (
     <></>
