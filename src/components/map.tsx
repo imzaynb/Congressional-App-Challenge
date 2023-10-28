@@ -1,7 +1,7 @@
 import { LatLng } from "@/types/latlng";
 import { GoogleMap, Marker, useJsApiLoader, } from "@react-google-maps/api";
 import { useCallback, useState, useEffect, CSSProperties } from "react";
-import MapComponent from "./mapComponent";
+import MapComponent from "./map-component";
 
 interface MapProps {
   center: LatLng;
