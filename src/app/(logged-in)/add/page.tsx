@@ -1,9 +1,11 @@
 "use client";
 
+import AddBusinessForm from "@/components/add-buisness-form";
+
 export default function AddPage() {
   return (
     <>
-      Add a form to add address information to map
+      <AddBusinessForm />
     </>
   )
 }
