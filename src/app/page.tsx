@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { LatLng } from "@/types/latlng";
 import { createAccount, getAccount, getAddress, supabaseClient } from "@/lib/database";
 import { Account } from "@/types/database_types";
-import getLatLngFromAddress from "@/lib/geocode";
+import { getLatLngFromAddress } from "@/lib/geocode";
 
 let locations = [
   { lat: 42.54492084597748, lng: -83.21533837375769 },
