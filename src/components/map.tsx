@@ -1,5 +1,5 @@
 import { LatLng } from "@/types/latlng";
-import { GoogleMap, Marker, useJsApiLoader, } from "@react-google-maps/api";
+import { useJsApiLoader } from "@react-google-maps/api";
 import { useCallback, useState, useEffect, CSSProperties } from "react";
 import MapComponent from "./map-component";
 
@@ -18,6 +18,7 @@ export default function Map({ center, locations }: MapProps): JSX.Element {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyCQiI-0DC0AYdgn2s4Nz-PXKKmR-41Zc-U",
+    libraries: ["places"]
   });
 
   const [map, setMap] = useState<google.maps.Map | null>(null);
