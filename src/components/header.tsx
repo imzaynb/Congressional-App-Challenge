@@ -1,7 +1,6 @@
 "use client";
 
 import { ModeToggle } from "@/components/mode-toggle";
-
 import { useUser, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs"
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -16,7 +15,10 @@ const Header = () => {
         {isSignedIn ? (
           <div className="ml-2">
             <Button variant="link">
-              <Link href="/map">Map</Link>
+              <Link href="/add">Add Discounts</Link>
+            </Button>
+            <Button variant="link">
+              <Link href="/settings">Settings</Link>
             </Button>
           </div>
         ) : (
