@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { LatLng } from "@/types/latlng";
 import { createAccount, getAccount, getAddress, supabaseClient } from "@/lib/database";
 import { Account } from "@/types/database_types";
+import getLatLngFromAddress from "@/lib/geocode";
 
 let locations = [
   { lat: 42.54492084597748, lng: -83.21533837375769 },
@@ -62,6 +63,9 @@ export default function Home() {
         const lat = centerAddress.lat;
         const lng = centerAddress.lng;
         setCenter({ lat: lat, lng: lng });
+
+        const lat__lng = await getLatLngFromAddress("2595 S Rochester Rd, Rochester Hills, MI 48307");
+        console.log(lat__lng);
       }
     };
     obtainCenter();
@@ -79,7 +83,7 @@ export default function Home() {
               <>
                 <div>
                   <div className="overflow-y-scroll scrollbar top-[66px] bottom-0 fixed w-1/4">
-                    <LocationCard latlng={{ lat: 42.54492084597748, lng: -83.21533837375769 }} />
+                    {/*<LocationCard latlng={{ lat: 42.54492084597748, lng: -83.21533837375769 }} />*/}
                   </div>
                 </div>
                 <Map center={center} locations={locations} />
