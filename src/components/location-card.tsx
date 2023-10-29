@@ -24,7 +24,7 @@ export function LocationCard({ photo, rating, icon, name, type, website, address
       <CardHeader className={"flex-auto"}>
         <CardTitle className={"tracking-wide text-3xl"} style={firaSans600.style}>{name}</CardTitle>
         <CardDescription className={"text-xl"} style={lato400.style}>
-            {rating}  <Rating className={"align-text-bottom"} name="read-only" precision={0.5} value={rating} size="medium" />
+            {rating}  <Rating className={"align-text-bottom"} name="read-only" precision={0.5} readOnly value={rating} size="medium" />
         </CardDescription>
           {type}
           <CardContent className={"px-0 w-fit"} style={lato300.style}>

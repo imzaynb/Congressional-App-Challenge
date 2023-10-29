@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca72556a-61eb-4fae-bebe-f1f9b1a72bfb" name="Changes" comment="Called All Apis">
+    <list default="true" id="ca72556a-61eb-4fae-bebe-f1f9b1a72bfb" name="Changes" comment="Card Completed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/location-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/location-card.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/map-component.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/map-component.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/map.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/map.tsx" afterDir="false" />
     </list>
     <list id="104a0475-005c-4a6f-88ca-af54d2ab34ac" name="Changes by zaynb" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -74,7 +68,7 @@
       <updated>1698513884224</updated>
       <workItem from="1698513885924" duration="353000" />
       <workItem from="1698514261693" duration="1502000" />
-      <workItem from="1698595033447" duration="7304000" />
+      <workItem from="1698595033447" duration="8016000" />
     </task>
     <task id="LOCAL-00001" summary="push">
       <option name="closed" value="true" />
@@ -92,7 +86,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698526353682</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Card Completed">
+      <option name="closed" value="true" />
+      <created>1698602441167</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1698602441167</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -102,6 +104,7 @@
     <MESSAGE value="Broky code" />
     <MESSAGE value="push" />
     <MESSAGE value="Called All Apis" />
-    <option name="LAST_COMMIT_MESSAGE" value="Called All Apis" />
+    <MESSAGE value="Card Completed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Card Completed" />
   </component>
 </project>
