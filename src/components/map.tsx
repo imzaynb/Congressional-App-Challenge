@@ -2,7 +2,6 @@ import { LatLng } from "@/types/latlng";
 import { useJsApiLoader } from "@react-google-maps/api";
 import { useCallback, useState, useEffect, CSSProperties } from "react";
 import MapComponent from "./map-component";
-import {getImageFromRef} from "@/lib/utils";
 
 interface MapProps {
   center: LatLng;

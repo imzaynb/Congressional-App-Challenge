@@ -82,8 +82,8 @@ export default function Home() {
             {isSignedIn ? (
               <>
                 <div>
-                  <div className="overflow-y-scroll scrollbar top-[66px] bottom-0 fixed w-1/4">
-                    {/*<LocationCard latlng={{ lat: 42.54492084597748, lng: -83.21533837375769 }} />*/}
+                  <div className="overflow-y-scroll scrollbar top-[66px] bottom-0 fixed w-1/3">
+                    <LocationCard photo={"photo"} rating={4.4} icon={"icon"} name={"Pappa Roti"} type={"Resturant"} website={"www.papparotti.com"} address={"2595 S Rochester Rd, Rochester Hills, MI 48307"} phone={"248-561-5942"}></LocationCard>
                   </div>
                 </div>
                 <Map center={center} locations={locations} />

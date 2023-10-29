@@ -4,16 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca72556a-61eb-4fae-bebe-f1f9b1a72bfb" name="Changes" comment="push">
+    <list default="true" id="ca72556a-61eb-4fae-bebe-f1f9b1a72bfb" name="Changes" comment="Called All Apis">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/location-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/location-card.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/map-component.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/map-component.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/map.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/map.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/geocode.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/geocode.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/places.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/places.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/utils.ts" afterDir="false" />
     </list>
     <list id="104a0475-005c-4a6f-88ca-af54d2ab34ac" name="Changes by zaynb" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,21 +49,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "suki",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Users\\Saravanan Ponniah\\WebstormProjects\\Congressional-App-Challenge\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;suki&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Saravanan Ponniah\\WebstormProjects\\Congressional-App-Challenge\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -75,6 +74,7 @@
       <updated>1698513884224</updated>
       <workItem from="1698513885924" duration="353000" />
       <workItem from="1698514261693" duration="1502000" />
+      <workItem from="1698595033447" duration="7304000" />
     </task>
     <task id="LOCAL-00001" summary="push">
       <option name="closed" value="true" />
@@ -84,7 +84,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698517869390</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Called All Apis">
+      <option name="closed" value="true" />
+      <created>1698526353682</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1698526353682</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -93,6 +101,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Broky code" />
     <MESSAGE value="push" />
-    <option name="LAST_COMMIT_MESSAGE" value="push" />
+    <MESSAGE value="Called All Apis" />
+    <option name="LAST_COMMIT_MESSAGE" value="Called All Apis" />
   </component>
 </project>
