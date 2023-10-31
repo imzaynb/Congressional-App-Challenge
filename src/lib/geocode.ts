@@ -1,4 +1,5 @@
 import { LatLng } from "@/types/latlng";
+import {getBusinessDetails} from "@/lib/places";
 export const getLatLngFromAddress = async (address: string): Promise<LatLng | null> => {
   let latlng: LatLng | null = null;
   const geocoder = new window.google.maps.Geocoder();
@@ -13,22 +14,6 @@ export const getLatLngFromAddress = async (address: string): Promise<LatLng | nu
     }
   });
   return latlng;
-}
-
-export const getPlaceIdFromAddress = async (address: string): Promise<string | null> => {
-  let placeId = "";
-  const geocoder = new window.google.maps.Geocoder();
-  await geocoder.geocode({ address: address }, (results, status) => {
-    if (!results) return;
-    if (status === "OK" && results[0]) { // There is a slight problem here where if results ends up being null then bad stuff happens
-      const id = results[0].place_id;
-      placeId = id;
-    } else {
-      console.error("Geocoding failed for address: ", address);
-      return null;
-    }
-  });
-  return placeId;
 }
 
 export const getAddressFromLatLng = async (latlng: LatLng): Promise<string | null> => {

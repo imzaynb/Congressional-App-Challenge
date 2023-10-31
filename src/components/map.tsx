@@ -2,6 +2,7 @@ import { LatLng } from "@/types/latlng";
 import { useJsApiLoader } from "@react-google-maps/api";
 import { useCallback, useState, useEffect, CSSProperties } from "react";
 import MapComponent from "./map-component";
+import {getPlaceIdFromQuery} from "@/lib/places";
 
 interface MapProps {
   center: LatLng;
@@ -55,6 +56,9 @@ export default function Map({ center, locations }: MapProps): JSX.Element {
       locations.forEach((location) => {
         geocodeLocation(location);
       });
+
+      getPlaceIdFromQuery("pappa roti", map);
+
     }
   }, [isLoaded, map, locations]);
 
