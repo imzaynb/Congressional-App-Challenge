@@ -1,5 +1,5 @@
 import { LatLng } from "@/types/latlng";
-import {getBusinessDetails} from "@/lib/places";
+
 export const getLatLngFromAddress = async (address: string): Promise<LatLng | null> => {
   let latlng: LatLng | null = null;
   const geocoder = new window.google.maps.Geocoder();

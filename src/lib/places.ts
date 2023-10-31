@@ -1,8 +1,11 @@
 import React from "react";
-export const getBusinessDetails = (placeId: string, map: google.maps.Map) => {
+import {LocationCard} from "@/components/location-card";
+import {LatLng} from "@/types/latlng";
+import {getLatLngFromAddress} from "@/lib/geocode";
+export const getBusinessDetails = (placeId: string, map: google.maps.Map, coords:LatLng) => {
     const request = {
         placeId: placeId,
-        fields: ["photo", "rating", "icon", "name", "type", "website", "formatted_address", "formatted_phone_number", "geometry"],
+        fields: ["photos", "rating", "icon", "name", "type", "website", "formatted_address", "formatted_phone_number", "geometry"],
     };
 
     const service = new google.maps.places.PlacesService(map);
@@ -20,14 +23,36 @@ export const getBusinessDetails = (placeId: string, map: google.maps.Map) => {
             const address = place.formatted_address;
             const phone = place.formatted_phone_number;
 
-            console.log(photo);
-            console.log(rating);
-            console.log(icon);
-            console.log(name);
-            console.log(type);
-            console.log(website);
-            console.log(address);
-            console.log(phone);
+            if(!photo) {
+                return;
+            }
+
+            console.log(photo[0]);
+
+            if(!rating) {
+                return;
+            }
+            if(!icon) {
+                return;
+            }
+            if(!name) {
+                return;
+            }
+            if(!type) {
+                return;
+            }
+            if(!website) {
+                return;
+            }
+            if(!address) {
+                return;
+            }
+            if(!phone) {
+                return;
+            }
+            const tang:string = type[0];
+
+            LocationCard({photo, rating, icon, name, type: tang, website, address, phone, coords});
 
         }
     });
@@ -41,6 +66,12 @@ export const getPlaceIdFromQuery = async (query: string, map: google.maps.Map) =
         fields: ["place_id"],
     };
 
+    const coords = await getLatLngFromAddress("2595 S Rochester Rd, Rochester Hills, MI 48307");
+
+    if(!coords) {
+        return;
+    }
+
     service = new google.maps.places.PlacesService(map);
     service.findPlaceFromQuery(request, (results, status) => {
         if (status === google.maps.places.PlacesServiceStatus.OK && results) {
@@ -49,9 +80,8 @@ export const getPlaceIdFromQuery = async (query: string, map: google.maps.Map) =
                 return;
             }
             res = results[0].place_id;
-            getBusinessDetails(res, map);
+            getBusinessDetails(res, map, coords);
         }
     });
 
 }
-

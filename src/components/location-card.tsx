@@ -1,13 +1,14 @@
 import * as React from "react"
-import { Button, buttonVariants } from "@/components/ui/button"
+import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import { lato300, lato400, firaSans400, firaSans600} from "@/styles/font";
 import {Rating} from "@mui/material";
 import Link from "next/link";
+import {LatLng} from "@/types/latlng";
 
 interface LocationCardProps {
-    photo: string,
+    photo: google.maps.places.PlacePhoto[],
     rating: number,
     icon: string,
     name: string,
@@ -15,9 +16,10 @@ interface LocationCardProps {
     website: string,
     address: string,
     phone: string
+    coords: LatLng,
 }
 
-export function LocationCard({ photo, rating, icon, name, type, website, address, phone }: LocationCardProps) {
+export function LocationCard({ photo, rating, icon, name, type, website, address, phone, coords}: LocationCardProps) {
 
   return (
     <Card className={"grid grid-cols-2"}>
@@ -42,7 +44,7 @@ export function LocationCard({ photo, rating, icon, name, type, website, address
               <Link href={website}>Visit Site</Link>
           </Button>
       </CardHeader>
-        <img className={"h-full w-full rounded-xl"} src={photo}/>
+        <img className={"h-full w-full rounded-xl"} src={""}/>
     </Card>
   )
 }

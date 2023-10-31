@@ -36,6 +36,7 @@
     "clsx": "^2.0.0",
     "eslint": "8.50.0",
     "eslint-config-next": "13.5.2",
+    "google-maps-react-markers": "^2.0.6",
     "http-proxy": "^1.18.1",
     "http-proxy-middleware": "^2.0.6",
     "lucide-react": "^0.279.0",
