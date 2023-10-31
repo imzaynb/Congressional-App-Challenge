@@ -11,11 +11,13 @@ const formSchema = z.object({
   address: z.string(),
 })
 
-interface AddBusinessFormProps {
+export type formSchemaType = typeof formSchema;
 
+interface AddBusinessFormProps {
+  onSubmit: (values: z.infer<formSchemaType>) => void,
 }
 
-const AddBusinessForm = ({ }: AddBusinessFormProps) => {
+const AddBusinessForm = ({ onSubmit }: AddBusinessFormProps) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -23,9 +25,6 @@ const AddBusinessForm = ({ }: AddBusinessFormProps) => {
     }
   })
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log(values);
-  }
 
   return (
     <div className="flex justify-around w-full mt-10 ">
