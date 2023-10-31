@@ -11,14 +11,6 @@ interface MapComponentProps {
   containerStyle: CSSProperties,
 }
 
-
-const containerStyle: CSSProperties = {
-  width: "66.666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666%",
-  height: "calc(100vh - 66px)", //66px is the height of the header so get the height of the whole screen and subtract the header
-  float: "right",
-};
-
-
 export default function MapComponent({ center, markers, containerStyle, onLoad, onUnmount, markerOnClick }: MapComponentProps): JSX.Element {
   return (
     <GoogleMap
