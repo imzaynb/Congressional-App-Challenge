@@ -2,7 +2,7 @@ import React from "react";
 export const getBusinessDetails = (placeId: string, map: google.maps.Map) => {
     const request = {
         placeId: placeId,
-        fields: ["photo", "rating", "icon", "name", "type", "website", "formatted_ address", "formatted_phone_number", "geometry"],
+        fields: ["photo", "rating", "icon", "name", "type", "website", "formatted_address", "formatted_phone_number", "geometry"],
     };
 
     const service = new google.maps.places.PlacesService(map);
@@ -28,11 +28,12 @@ export const getBusinessDetails = (placeId: string, map: google.maps.Map) => {
             console.log(website);
             console.log(address);
             console.log(phone);
+
         }
     });
 }
 
-export const getPlaceIdFromQuery = async (query: string, map: google.maps.Map): Promise<string>=> {
+export const getPlaceIdFromQuery = async (query: string, map: google.maps.Map) => {
     let res = "";
     let service;
     const request = {
@@ -44,12 +45,13 @@ export const getPlaceIdFromQuery = async (query: string, map: google.maps.Map): 
     service.findPlaceFromQuery(request, (results, status) => {
         if (status === google.maps.places.PlacesServiceStatus.OK && results) {
             console.log(results[0].place_id);
-            //HELP ZAYNN HNASDFUIASUIFASHDFASDFASDASD
-           // res = results[0].place_id; RUN FIRST AND THEN FIGURE THIS OUT IT LITTERALY WORKSSSSSSSSSSSS LOOK AT THE CONSOLE.LOG!!!!!!
+            if(!results[0].place_id) {
+                return;
+            }
+            res = results[0].place_id;
+            getBusinessDetails(res, map);
         }
     });
-
-    return res;
 
 }
 
