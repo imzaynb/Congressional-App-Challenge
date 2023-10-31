@@ -6,8 +6,9 @@ import { useEffect, useState } from "react";
 import { LocationCard } from "@/components/location-card";
 import { Button } from "@/components/ui/button";
 import { LatLng } from "@/types/latlng";
-import { createAccount, getAccount, getAddress, supabaseClient } from "@/lib/database";
-import { Account } from "@/types/database_types";
+import { createAccount, getAccount, getAddress, getAllBusinesses, matchAddress, supabaseClient } from "@/lib/database";
+import { Account, Address, Business } from "@/types/database_types";
+import { getLatLngFromAddress } from "@/lib/geocode";
 
 let locations = [
   { lat: 42.54492084597748, lng: -83.21533837375769 },
@@ -25,9 +26,11 @@ export default function Home() {
   const { isSignedIn, isLoaded, user } = useUser();
   const { session } = useSession();
   const [center, setCenter] = useState<LatLng>({ lat: 0, lng: 0 });
+  const [businesses, setBusinesses] = useState<Business[] | null>(null);
+  const [addresses, setAddresses] = useState<Address[]>([]);
 
   useEffect(() => {
-    const obtainCenter = async () => {
+    const loadInfo = async () => {
       if (isSignedIn) {
         const supabaseAccessToken = await session?.getToken({
           template: "supabase",
@@ -62,9 +65,21 @@ export default function Home() {
         const lat = centerAddress.lat;
         const lng = centerAddress.lng;
         setCenter({ lat: lat, lng: lng });
+
+        const accessedBusinesses = await getAllBusinesses(supabase);
+        setBusinesses(accessedBusinesses);
+
+        const accessedAddresses = businesses?.map(async (business) => {
+          if (business.address_id) {
+            const addr = await getAddress(supabase, business.address_id);
+            return addr;
+          }
+        })
+        console.log(accessedAddresses);
+
       }
     };
-    obtainCenter();
+    loadInfo();
   }, [isSignedIn]);
 
   //Will need to create a function that auto fills cards with all business info
@@ -79,10 +94,11 @@ export default function Home() {
               <>
                 <div>
                   <div className="overflow-y-scroll scrollbar top-[66px] bottom-0 fixed w-1/4">
-                    <LocationCard latlng={{ lat: 42.54492084597748, lng: -83.21533837375769 }} />
+                    {/*<LocationCard latlng={{ lat: 42.54492084597748, lng: -83.21533837375769 }} />*/}
                   </div>
                 </div>
-                <Map center={center} locations={locations} />
+                <Map center={center} addresses={addresses} markersOnClick={() => { }} />
+                {/* TODO: fix the markersOnCLick above */}
               </>
             ) : (
               <div className="container mt-8 flex justify-center">

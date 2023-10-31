@@ -1,4 +1,4 @@
-import { Account, Address } from "@/types/database_types";
+import { Account, Address, Business } from "@/types/database_types";
 import { Database } from "@/types/supabase";
 import { SupabaseClient, createClient } from "@supabase/supabase-js";
 
@@ -147,6 +147,25 @@ export const getAddress = async (
 
     const address = data ? data[0] : null;
     return address;
+  } catch (error) {
+    alert(`${error} in matchAddress()`);
+  }
+  return null;
+}
+
+export const getAllBusinesses = async (
+  supabase: SupabaseClient<Database>
+): Promise<Business[] | null> => {
+  try {
+    const { data, error, status } = await supabase
+      .from("business")
+      .select("*");
+
+    if (error && status !== 406) {
+      throw error;
+    }
+
+    return data;
   } catch (error) {
     alert(`${error} in matchAddress()`);
   }

@@ -12,6 +12,7 @@ export default function SettingsPage() {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyCQiI-0DC0AYdgn2s4Nz-PXKKmR-41Zc-U",
+    libraries: ["places"]
   });
 
   const { user } = useUser();

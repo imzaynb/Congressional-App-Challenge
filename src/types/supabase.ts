@@ -64,6 +64,49 @@ export interface Database {
         }
         Relationships: []
       }
+      business: {
+        Row: {
+          address_id: number | null
+          created_at: string
+          id: number
+          name: string | null
+          phone_number: string | null
+          picture: string | null
+          rating: string | null
+          type: string | null
+          website: string | null
+        }
+        Insert: {
+          address_id?: number | null
+          created_at?: string
+          id?: number
+          name?: string | null
+          phone_number?: string | null
+          picture?: string | null
+          rating?: string | null
+          type?: string | null
+          website?: string | null
+        }
+        Update: {
+          address_id?: number | null
+          created_at?: string
+          id?: number
+          name?: string | null
+          phone_number?: string | null
+          picture?: string | null
+          rating?: string | null
+          type?: string | null
+          website?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "business_address_id_fkey"
+            columns: ["address_id"]
+            referencedRelation: "addresses"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
     }
     Views: {
       [_ in never]: never
