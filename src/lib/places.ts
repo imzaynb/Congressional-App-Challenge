@@ -1,8 +1,4 @@
-import React from "react";
-import {LocationCard} from "@/components/location-card";
-import {LatLng} from "@/types/latlng";
-import {getLatLngFromAddress} from "@/lib/geocode";
-export const getBusinessDetails = (placeId: string, map: google.maps.Map, coords:LatLng) => {
+export const getBusinessDetails = (placeId: string, map: google.maps.Map) => {
     const request = {
         placeId: placeId,
         fields: ["photos", "rating", "icon", "name", "type", "website", "formatted_address", "formatted_phone_number", "geometry"],
@@ -26,9 +22,6 @@ export const getBusinessDetails = (placeId: string, map: google.maps.Map, coords
             if(!photo) {
                 return;
             }
-
-            console.log(photo[0]);
-
             if(!rating) {
                 return;
             }
@@ -50,9 +43,11 @@ export const getBusinessDetails = (placeId: string, map: google.maps.Map, coords
             if(!phone) {
                 return;
             }
-            const tang:string = type[0];
 
-            LocationCard({photo, rating, icon, name, type: tang, website, address, phone, coords});
+            const photoLink = photo[0].getUrl();
+            const placeType = type[0];
+
+            //Database add photoLink, rating, icon, name, placeType, website, address, phone
 
         }
     });
@@ -66,12 +61,6 @@ export const getPlaceIdFromQuery = async (query: string, map: google.maps.Map) =
         fields: ["place_id"],
     };
 
-    const coords = await getLatLngFromAddress("2595 S Rochester Rd, Rochester Hills, MI 48307");
-
-    if(!coords) {
-        return;
-    }
-
     service = new google.maps.places.PlacesService(map);
     service.findPlaceFromQuery(request, (results, status) => {
         if (status === google.maps.places.PlacesServiceStatus.OK && results) {
@@ -80,8 +69,7 @@ export const getPlaceIdFromQuery = async (query: string, map: google.maps.Map) =
                 return;
             }
             res = results[0].place_id;
-            getBusinessDetails(res, map, coords);
+            getBusinessDetails(res, map);
         }
     });
-
 }

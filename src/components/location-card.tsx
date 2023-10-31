@@ -5,10 +5,9 @@ import { Separator } from "@/components/ui/separator"
 import { lato300, lato400, firaSans400, firaSans600} from "@/styles/font";
 import {Rating} from "@mui/material";
 import Link from "next/link";
-import {LatLng} from "@/types/latlng";
 
 interface LocationCardProps {
-    photo: google.maps.places.PlacePhoto[],
+    photo: string,
     rating: number,
     icon: string,
     name: string,
@@ -16,10 +15,9 @@ interface LocationCardProps {
     website: string,
     address: string,
     phone: string
-    coords: LatLng,
 }
 
-export function LocationCard({ photo, rating, icon, name, type, website, address, phone, coords}: LocationCardProps) {
+export function LocationCard({ photo, rating, icon, name, type, website, address, phone}: LocationCardProps) {
 
   return (
     <Card className={"grid grid-cols-2"}>
@@ -44,7 +42,7 @@ export function LocationCard({ photo, rating, icon, name, type, website, address
               <Link href={website}>Visit Site</Link>
           </Button>
       </CardHeader>
-        <img className={"h-full w-full rounded-xl"} src={""}/>
+        <img className={"h-full w-full rounded-xl"} src={"https://maps.googleapis.com/maps/api/place/js/PhotoService.GetPhoto?1sAcJnMuG1sk5Ezh848oV7OQHiTlPMkmIgdZdW_5EDqBjZyZgvdRcGnnHAlcALw1oMErGbicHWK5uiMXZQUvFNWROrHcTOceoxgeBCxKD3NVZ_MFsYKDHmiEtEgQkwk_GJDxB6SZsPg5mPFi149jzi13MxKw45iLXVtNxiVw_cVnsNutyjQH4L&3u1000&5m1&2e1&callback=none&key=AIzaSyCQiI-0DC0AYdgn2s4Nz-PXKKmR-41Zc-U&token=40856"}/>
     </Card>
   )
 }

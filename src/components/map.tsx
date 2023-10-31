@@ -57,7 +57,7 @@ export default function Map({ center, locations }: MapProps): JSX.Element {
         geocodeLocation(location);
       });
 
-      getPlaceIdFromQuery("pappa roti", map);
+      getPlaceIdFromQuery("pappa roti rochester rd", map);
 
     }
   }, [isLoaded, map, locations]);

@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca72556a-61eb-4fae-bebe-f1f9b1a72bfb" name="Changes" comment="FINALLY WORKS WERE DONEEEEEEEEEEEE">
+    <list default="true" id="ca72556a-61eb-4fae-bebe-f1f9b1a72bfb" name="Changes" comment="More Stuff">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/location-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/location-card.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/map.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/map.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/geocode.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/geocode.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lib/places.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/places.ts" afterDir="false" />
     </list>
     <list id="104a0475-005c-4a6f-88ca-af54d2ab34ac" name="Changes by zaynb" comment="" />
@@ -83,7 +81,7 @@
       <workItem from="1698513885924" duration="353000" />
       <workItem from="1698514261693" duration="1502000" />
       <workItem from="1698595033447" duration="8016000" />
-      <workItem from="1698704458726" duration="13531000" />
+      <workItem from="1698704458726" duration="16353000" />
     </task>
     <task id="LOCAL-00001" summary="push">
       <option name="closed" value="true" />
@@ -125,7 +123,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698712257024</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="More Stuff">
+      <option name="closed" value="true" />
+      <created>1698765690361</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1698765690361</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -149,6 +155,7 @@
     <MESSAGE value="Card Completed" />
     <MESSAGE value="ZAYN FIX MY CODE PLEASE" />
     <MESSAGE value="FINALLY WORKS WERE DONEEEEEEEEEEEE" />
-    <option name="LAST_COMMIT_MESSAGE" value="FINALLY WORKS WERE DONEEEEEEEEEEEE" />
+    <MESSAGE value="More Stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="More Stuff" />
   </component>
 </project>
