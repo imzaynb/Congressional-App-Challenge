@@ -4,16 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca72556a-61eb-4fae-bebe-f1f9b1a72bfb" name="Changes" comment="push">
+    <list default="true" id="ca72556a-61eb-4fae-bebe-f1f9b1a72bfb" name="Changes" comment="More Stuff">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/location-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/location-card.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/map.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/map.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/geocode.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/geocode.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lib/places.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/places.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/utils.ts" afterDir="false" />
     </list>
     <list id="104a0475-005c-4a6f-88ca-af54d2ab34ac" name="Changes by zaynb" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,6 +20,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JavaScript File" />
         <option value="TypeScript File" />
       </list>
     </option>
@@ -58,13 +55,21 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "suki",
     "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
     "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
     "ts.external.directory.path": "C:\\Users\\Saravanan Ponniah\\WebstormProjects\\Congressional-App-Challenge\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Saravanan Ponniah\WebstormProjects\Congressional-App-Challenge" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -75,6 +80,8 @@
       <updated>1698513884224</updated>
       <workItem from="1698513885924" duration="353000" />
       <workItem from="1698514261693" duration="1502000" />
+      <workItem from="1698595033447" duration="8016000" />
+      <workItem from="1698704458726" duration="16353000" />
     </task>
     <task id="LOCAL-00001" summary="push">
       <option name="closed" value="true" />
@@ -84,15 +91,71 @@
       <option name="project" value="LOCAL" />
       <updated>1698517869390</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Called All Apis">
+      <option name="closed" value="true" />
+      <created>1698526353682</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1698526353682</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Card Completed">
+      <option name="closed" value="true" />
+      <created>1698602441167</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1698602441167</updated>
+    </task>
+    <task id="LOCAL-00004" summary="ZAYN FIX MY CODE PLEASE">
+      <option name="closed" value="true" />
+      <created>1698711031695</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1698711031696</updated>
+    </task>
+    <task id="LOCAL-00005" summary="FINALLY WORKS WERE DONEEEEEEEEEEEE">
+      <option name="closed" value="true" />
+      <created>1698712257024</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1698712257024</updated>
+    </task>
+    <task id="LOCAL-00006" summary="More Stuff">
+      <option name="closed" value="true" />
+      <created>1698765690361</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1698765690361</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Broky code" />
     <MESSAGE value="push" />
-    <option name="LAST_COMMIT_MESSAGE" value="push" />
+    <MESSAGE value="Called All Apis" />
+    <MESSAGE value="Card Completed" />
+    <MESSAGE value="ZAYN FIX MY CODE PLEASE" />
+    <MESSAGE value="FINALLY WORKS WERE DONEEEEEEEEEEEE" />
+    <MESSAGE value="More Stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="More Stuff" />
   </component>
 </project>

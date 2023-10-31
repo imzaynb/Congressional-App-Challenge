@@ -93,8 +93,8 @@ export default function Home() {
             {isSignedIn ? (
               <>
                 <div>
-                  <div className="overflow-y-scroll scrollbar top-[66px] bottom-0 fixed w-1/4">
-                    {/*<LocationCard latlng={{ lat: 42.54492084597748, lng: -83.21533837375769 }} />*/}
+                  <div className="overflow-y-scroll scrollbar top-[66px] bottom-0 fixed w-1/3">
+                    <LocationCard photo={"https://maps.googleapis.com/maps/api/place/js/PhotoService.GetPhoto?1sAcJnMuG1sk5Ezh848oV7OQHiTlPMkmIgdZdW_5EDqBjZyZgvdRcGnnHAlcALw1oMErGbicHWK5uiMXZQUvFNWROrHcTOceoxgeBCxKD3NVZ_MFsYKDHmiEtEgQkwk_GJDxB6SZsPg5mPFi149jzi13MxKw45iLXVtNxiVw_cVnsNutyjQH4L&3u1000&5m1&2e1&callback=none&key=AIzaSyCQiI-0DC0AYdgn2s4Nz-PXKKmR-41Zc-U&token=40856"} rating={4.4} icon={"icon"} name={"Pappa Roti"} type={"Resturant"} website={"www.papparotti.com"} address={"2595 S Rochester Rd, Rochester Hills, MI 48307"} phone={"248-561-5942"}></LocationCard>
                   </div>
                 </div>
                 <Map center={center} addresses={addresses} markersOnClick={() => { }} />
