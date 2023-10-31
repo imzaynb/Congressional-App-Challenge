@@ -2,11 +2,16 @@ import { LatLng } from "@/types/latlng";
 import { useJsApiLoader } from "@react-google-maps/api";
 import { useCallback, useState, useEffect, CSSProperties } from "react";
 import MapComponent from "./map-component";
+
 import {getPlaceIdFromQuery} from "@/lib/places";
 
+import { Address } from "@/types/database_types";
+
+
 interface MapProps {
-  center: LatLng;
-  locations: (string | LatLng)[]; // Allow either addresses or coordinates
+  center: LatLng,
+  addresses: Address[], // Allow either addresses or coordinates
+  markersOnClick: () => void,
 }
 
 const containerStyle: CSSProperties = {
@@ -15,7 +20,7 @@ const containerStyle: CSSProperties = {
   float: "right",
 };
 
-export default function Map({ center, locations }: MapProps): JSX.Element {
+export default function Map({ center, addresses, markersOnClick }: MapProps): JSX.Element {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyCQiI-0DC0AYdgn2s4Nz-PXKKmR-41Zc-U",
@@ -23,7 +28,6 @@ export default function Map({ center, locations }: MapProps): JSX.Element {
   });
 
   const [map, setMap] = useState<google.maps.Map | null>(null);
-  const [markers, setMarkers] = useState<any>([]);
 
   useEffect(() => {
     if (isLoaded && map) {
@@ -62,6 +66,12 @@ export default function Map({ center, locations }: MapProps): JSX.Element {
     }
   }, [isLoaded, map, locations]);
 
+  const latlngs = addresses.map(address => {
+    const latlng: LatLng = { lat: address.lat, lng: address.lng };
+    return latlng;
+  })
+
+
   const onLoad = useCallback((mapInstance: google.maps.Map) => {
     if (mapInstance) {
       setMap(mapInstance);
@@ -75,7 +85,7 @@ export default function Map({ center, locations }: MapProps): JSX.Element {
   }, []);
 
   return isLoaded ? (
-    <MapComponent onUnmount={onUnmount} onLoad={onLoad} markers={markers} center={center} />
+    <MapComponent onUnmount={onUnmount} onLoad={onLoad} containerStyle={containerStyle} markers={latlngs} center={center} markerOnClick={markersOnClick} />
   ) : (
     <></>
   );

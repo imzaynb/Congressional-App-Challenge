@@ -6,8 +6,8 @@ import { useEffect, useState } from "react";
 import { LocationCard } from "@/components/location-card";
 import { Button } from "@/components/ui/button";
 import { LatLng } from "@/types/latlng";
-import { createAccount, getAccount, getAddress, supabaseClient } from "@/lib/database";
-import { Account } from "@/types/database_types";
+import { createAccount, getAccount, getAddress, getAllBusinesses, matchAddress, supabaseClient } from "@/lib/database";
+import { Account, Address, Business } from "@/types/database_types";
 import { getLatLngFromAddress } from "@/lib/geocode";
 
 let locations = [
@@ -26,9 +26,11 @@ export default function Home() {
   const { isSignedIn, isLoaded, user } = useUser();
   const { session } = useSession();
   const [center, setCenter] = useState<LatLng>({ lat: 0, lng: 0 });
+  const [businesses, setBusinesses] = useState<Business[] | null>(null);
+  const [addresses, setAddresses] = useState<Address[]>([]);
 
   useEffect(() => {
-    const obtainCenter = async () => {
+    const loadInfo = async () => {
       if (isSignedIn) {
         const supabaseAccessToken = await session?.getToken({
           template: "supabase",
@@ -64,11 +66,20 @@ export default function Home() {
         const lng = centerAddress.lng;
         setCenter({ lat: lat, lng: lng });
 
-        const lat__lng = await getLatLngFromAddress("2595 S Rochester Rd, Rochester Hills, MI 48307");
-        console.log(lat__lng);
+        const accessedBusinesses = await getAllBusinesses(supabase);
+        setBusinesses(accessedBusinesses);
+
+        const accessedAddresses = businesses?.map(async (business) => {
+          if (business.address_id) {
+            const addr = await getAddress(supabase, business.address_id);
+            return addr;
+          }
+        })
+        console.log(accessedAddresses);
+
       }
     };
-    obtainCenter();
+    loadInfo();
   }, [isSignedIn]);
 
   //Will need to create a function that auto fills cards with all business info
@@ -86,7 +97,8 @@ export default function Home() {
                     <LocationCard photo={"https://maps.googleapis.com/maps/api/place/js/PhotoService.GetPhoto?1sAcJnMuG1sk5Ezh848oV7OQHiTlPMkmIgdZdW_5EDqBjZyZgvdRcGnnHAlcALw1oMErGbicHWK5uiMXZQUvFNWROrHcTOceoxgeBCxKD3NVZ_MFsYKDHmiEtEgQkwk_GJDxB6SZsPg5mPFi149jzi13MxKw45iLXVtNxiVw_cVnsNutyjQH4L&3u1000&5m1&2e1&callback=none&key=AIzaSyCQiI-0DC0AYdgn2s4Nz-PXKKmR-41Zc-U&token=40856"} rating={4.4} icon={"icon"} name={"Pappa Roti"} type={"Resturant"} website={"www.papparotti.com"} address={"2595 S Rochester Rd, Rochester Hills, MI 48307"} phone={"248-561-5942"}></LocationCard>
                   </div>
                 </div>
-                <Map center={center} locations={locations} />
+                <Map center={center} addresses={addresses} markersOnClick={() => { }} />
+                {/* TODO: fix the markersOnCLick above */}
               </>
             ) : (
               <div className="container mt-8 flex justify-center">

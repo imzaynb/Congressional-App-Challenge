@@ -7,7 +7,10 @@ interface MapComponentProps {
   markers: LatLng[];
   onUnmount: ((map: google.maps.Map) => void | Promise<void>) | undefined;
   onLoad: ((map: google.maps.Map) => void | Promise<void>) | undefined;
+  markerOnClick: () => void;
+  containerStyle: CSSProperties,
 }
+
 
 const containerStyle: CSSProperties = {
   width: "66.666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666%",
@@ -15,7 +18,8 @@ const containerStyle: CSSProperties = {
   float: "right",
 };
 
-export default function MapComponent({ center, markers, onLoad, onUnmount }: MapComponentProps): JSX.Element {
+
+export default function MapComponent({ center, markers, containerStyle, onLoad, onUnmount, markerOnClick }: MapComponentProps): JSX.Element {
   return (
     <GoogleMap
       mapContainerStyle={containerStyle}
@@ -26,7 +30,7 @@ export default function MapComponent({ center, markers, onLoad, onUnmount }: Map
     >
       {/* Render markers */}
       {markers.map((marker: LatLng, index: number) => (
-        <Marker key={index} position={marker} />
+        <Marker key={index} position={marker} onClick={markerOnClick} />
       ))}
 
     </GoogleMap>

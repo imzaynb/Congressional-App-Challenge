@@ -13,13 +13,13 @@ export const roundToPlace = (num: number, place: number): number => {
 
 export const getPlaceIdFromAddress = async (address: string) => {
   const url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=businesses+" + address + "&key=AIzaSyCQiI-0DC0AYdgn2s4Nz-PXKKmR-41Zc-U&libraries=places";
-  const {data} = await axios.get(url);
+  const { data } = await axios.get(url);
   return data["results"][0]["place_id"];
 }
 
 export const getImageFromRef = async (ref: string) => {
   const url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=" + ref + "&key=AIzaSyCQiI-0DC0AYdgn2s4Nz-PXKKmR-41Zc-U";
-  const {data} = await axios.get(url);
+  const { data } = await axios.get(url);
   console.log(data);
   return data;
 }

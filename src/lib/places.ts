@@ -51,6 +51,16 @@ export const getBusinessDetails = (placeId: string, map: google.maps.Map) => {
 
         }
     });
+
+
+export interface Printwap {
+  photo: google.maps.places.PlacePhoto[] | undefined,
+  rating: number | undefined,
+  icon: string | undefined,
+  name: string | undefined,
+  type: string[] | undefined,
+  website: string | undefined,
+
 }
 
 export const getPlaceIdFromQuery = async (query: string, map: google.maps.Map) => {
