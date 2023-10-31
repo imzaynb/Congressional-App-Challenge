@@ -45,6 +45,7 @@ export interface Database {
           inserted_at: string
           lat: number
           lng: number
+          placeId: string | null
         }
         Insert: {
           address: string
@@ -53,6 +54,7 @@ export interface Database {
           inserted_at?: string
           lat: number
           lng: number
+          placeId?: string | null
         }
         Update: {
           address?: string
@@ -61,6 +63,7 @@ export interface Database {
           inserted_at?: string
           lat?: number
           lng?: number
+          placeId?: string | null
         }
         Relationships: []
       }
@@ -72,6 +75,7 @@ export interface Database {
           name: string | null
           phone_number: string | null
           picture: string | null
+          placeId: string | null
           rating: string | null
           type: string | null
           website: string | null
@@ -83,6 +87,7 @@ export interface Database {
           name?: string | null
           phone_number?: string | null
           picture?: string | null
+          placeId?: string | null
           rating?: string | null
           type?: string | null
           website?: string | null
@@ -94,6 +99,7 @@ export interface Database {
           name?: string | null
           phone_number?: string | null
           picture?: string | null
+          placeId?: string | null
           rating?: string | null
           type?: string | null
           website?: string | null

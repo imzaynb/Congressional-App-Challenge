@@ -2,17 +2,12 @@
 
 import AddBusinessForm, { formSchemaType } from "@/components/add-buisness-form";
 import BlindMap from "@/components/blind-map";
-import Map from "@/components/map";
-import { Input } from "@/components/ui/input";
-import { createAddress, matchAddress, supabaseClient, updateAccount } from "@/lib/database";
+import { createAddress, createBusiness, matchAddress, supabaseClient, updateAccount } from "@/lib/database";
 import { getLatLngFromAddress } from "@/lib/geocode";
-import { HOME_ICON } from "@/lib/icons";
-import { getBusinessDetails } from "@/lib/places";
+import { Printwap, getBusinessDetails, getPlaceIdFromQuery } from "@/lib/places";
 import { roundToPlace, getPlaceIdFromAddress } from "@/lib/utils";
 import { useSession, useUser } from "@clerk/nextjs";
-import { useJsApiLoader } from "@react-google-maps/api";
 import { SupabaseClient } from "@supabase/supabase-js";
-import { LucideUtensilsCrossed } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import z from "zod";
 
@@ -54,19 +49,17 @@ export default function AddPage() {
     loadSupabase();
   }, []);
 
-  const onSubmit = (values: z.infer<formSchemaType>) => {
+  const onSubmit = async (values: z.infer<formSchemaType>) => {
     // 1. get lat long information to submit into addresses
     // 2. get placeId to get all other accompanied information 
     // 3. submit the above addressId and information as a business on the map
-    const addBusiness = async () => {
-      if (!supabase || !userId) { return; }
 
-      /// STEP 1 ///
-      let addressId: number;
-      {
+    if (!supabase || !userId || !map) { return null; }
+
+    getPlaceIdFromQuery(values.name + " " + values.address, map, async (placeId: string) => {
+      getBusinessDetails(placeId, map, async (printwap: Printwap, placeId: string) => {
+        let addressId: number;
         const data = await matchAddress(supabase, values.address);
-        console.log(`matchAddress() data: ${data}`);
-
         if (data) {
           console.log("data was found");
           const address = data;
@@ -75,36 +68,20 @@ export default function AddPage() {
           const latlng = await getLatLngFromAddress(values.address);
 
           if (!latlng) {
-            return;
+            return null;
           }
 
-          await createAddress(supabase, roundToPlace(latlng.lat, 3), roundToPlace(latlng.lng, 3), values.address, undefined); // assigning this to a variable is essential because then it waits until the procedure is complete before proceeding
-
+          await createAddress(supabase, latlng.lat, latlng.lng, values.address, printwap.icon, placeId); // assigning this to a variable is essential because then it waits until the procedure is complete before proceeding
           const address = await matchAddress(supabase, values.address);
 
           if (!address) {
-            return;
+            return null;
           }
           addressId = address.id;
         }
-      }
-      console.log(`${values.address} has address id: ${addressId}`);
-
-      /// STEP 2 ///
-      let placeId: string | null;
-      {
-        placeId = await getPlaceIdFromAddress(values.address);
-        if (!placeId || !map) { return; }
-
-        console.log(map);
-
-        console.log(placeId);
-
-        const businessDetails = getBusinessDetails(placeId, map);
-        console.log(`business details: ${businessDetails}`);
-      }
-    }
-    addBusiness();
+        await createBusiness(supabase, printwap, addressId, placeId);
+      });
+    });
   }
 
   return (

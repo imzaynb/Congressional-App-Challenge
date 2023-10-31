@@ -8,7 +8,8 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 
 const formSchema = z.object({
-  address: z.string(),
+  name: z.string().min(2),
+  address: z.string().min(2),
 })
 
 export type formSchemaType = typeof formSchema;
@@ -33,6 +34,22 @@ const AddBusinessForm = ({ onSubmit }: AddBusinessFormProps) => {
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
             <FormField
               control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="McDonalds" {...field} />
+                  </FormControl>
+                  <FormDescription>
+                    This is the name of the business.
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
               name="address"
               render={({ field }) => (
                 <FormItem>
@@ -41,7 +58,7 @@ const AddBusinessForm = ({ onSubmit }: AddBusinessFormProps) => {
                     <Input placeholder="shadcn" {...field} />
                   </FormControl>
                   <FormDescription>
-                    This is your public display name.
+                    This is the address of the business.
                   </FormDescription>
                   <FormMessage />
                 </FormItem>

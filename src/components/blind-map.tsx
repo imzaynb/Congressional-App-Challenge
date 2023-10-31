@@ -30,7 +30,7 @@ export default function BlindMap({ setMap }: MapProps): JSX.Element {
   }, []);
 
   return isLoaded ? (
-    <MapComponent onUnmount={onUnmount} onLoad={onLoad} containerStyle={containerStyle} markers={[]} center={{ lat: 0, lng: 0 }} markerOnClick={() => { }} />
+    <MapComponent onUnmount={onUnmount} onLoad={onLoad} containerStyle={containerStyle} address={[]} center={{ lat: 0, lng: 0 }} markerOnClick={() => { }} />
   ) : (
     <></>
   );

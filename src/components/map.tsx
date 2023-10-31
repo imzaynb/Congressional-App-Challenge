@@ -27,12 +27,6 @@ export default function Map({ center, addresses, markersOnClick }: MapProps): JS
 
   const [map, setMap] = useState<google.maps.Map | null>(null);
 
-  const latlngs = addresses.map(address => {
-    const latlng: LatLng = { lat: address.lat, lng: address.lng };
-    return latlng;
-  })
-
-
   const onLoad = useCallback((mapInstance: google.maps.Map) => {
     if (mapInstance) {
       setMap(mapInstance);
@@ -46,7 +40,7 @@ export default function Map({ center, addresses, markersOnClick }: MapProps): JS
   }, []);
 
   return isLoaded ? (
-    <MapComponent onUnmount={onUnmount} onLoad={onLoad} containerStyle={containerStyle} markers={latlngs} center={center} markerOnClick={markersOnClick} />
+    <MapComponent onUnmount={onUnmount} onLoad={onLoad} containerStyle={containerStyle} address={addresses} center={center} markerOnClick={markersOnClick} />
   ) : (
     <></>
   );

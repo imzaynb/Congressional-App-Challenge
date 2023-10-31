@@ -26,7 +26,7 @@ export default function Home() {
   const { isSignedIn, isLoaded, user } = useUser();
   const { session } = useSession();
   const [center, setCenter] = useState<LatLng>({ lat: 0, lng: 0 });
-  const [businesses, setBusinesses] = useState<Business[] | null>(null);
+  const [businesses, setBusinesses] = useState<Business[]>([]);
   const [addresses, setAddresses] = useState<Address[]>([]);
 
   useEffect(() => {
@@ -67,20 +67,37 @@ export default function Home() {
         setCenter({ lat: lat, lng: lng });
 
         const accessedBusinesses = await getAllBusinesses(supabase);
+
+        if (!accessedBusinesses) {
+          console.log("THIS IS NULL SHIIII");
+          return;
+        }
+
         setBusinesses(accessedBusinesses);
 
-        const accessedAddresses = businesses?.map(async (business) => {
-          if (business.address_id) {
-            const addr = await getAddress(supabase, business.address_id);
-            return addr;
-          }
-        })
-        console.log(accessedAddresses);
+        let addressesTemp: Address[] = []
+        for (let business of accessedBusinesses) {
+          if (!business.address_id) { return; }
+          const addr = await getAddress(supabase, business.address_id);
+          if (!addr) { continue; }
+          addressesTemp.push(addr);
+        }
 
+        setAddresses(addressesTemp);
       }
     };
     loadInfo();
   }, [isSignedIn]);
+
+  const getFullAddressFromPlaceId = (placeId: string | null) => {
+    if (!placeId) { return ""; }
+    for (let address of addresses) {
+      if (address.placeId === placeId) {
+        return address.address;
+      }
+    }
+    return "";
+  }
 
   //Will need to create a function that auto fills cards with all business info
   return (
@@ -94,7 +111,13 @@ export default function Home() {
               <>
                 <div>
                   <div className="overflow-y-scroll scrollbar top-[66px] bottom-0 fixed w-1/3">
-                    <LocationCard photo={"https://maps.googleapis.com/maps/api/place/js/PhotoService.GetPhoto?1sAcJnMuG1sk5Ezh848oV7OQHiTlPMkmIgdZdW_5EDqBjZyZgvdRcGnnHAlcALw1oMErGbicHWK5uiMXZQUvFNWROrHcTOceoxgeBCxKD3NVZ_MFsYKDHmiEtEgQkwk_GJDxB6SZsPg5mPFi149jzi13MxKw45iLXVtNxiVw_cVnsNutyjQH4L&3u1000&5m1&2e1&callback=none&key=AIzaSyCQiI-0DC0AYdgn2s4Nz-PXKKmR-41Zc-U&token=40856"} rating={4.4} icon={"icon"} name={"Pappa Roti"} type={"Resturant"} website={"www.papparotti.com"} address={"2595 S Rochester Rd, Rochester Hills, MI 48307"} phone={"248-561-5942"}></LocationCard>
+                    {businesses ?
+                      (businesses.map((business) => {
+                        return <LocationCard key={business.placeId} photo={business.picture} rating={business.rating ? parseFloat(business.rating) : 0} icon={""} name={business.name} type={business.type} website={business.website} address={getFullAddressFromPlaceId(business.placeId)} phone={business.phone_number}></LocationCard>
+                      })) :
+                      (
+                        <></>
+                      )}
                   </div>
                 </div>
                 <Map center={center} addresses={addresses} markersOnClick={() => { }} />
@@ -118,8 +141,9 @@ export default function Home() {
               </div>
             )}
           </div>
-        </main>
-      )}
+        </main >
+      )
+      }
     </>
   )
 }

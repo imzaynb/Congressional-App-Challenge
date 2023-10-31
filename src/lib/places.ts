@@ -1,4 +1,4 @@
-export const getBusinessDetails = (placeId: string, map: google.maps.Map) => {
+export const getBusinessDetails = (placeId: string, map: google.maps.Map, businessDetailsFn: (printwap: Printwap, placeId: string) => void) => {
   const request = {
     placeId: placeId,
     fields: ["photos", "rating", "icon", "name", "type", "website", "formatted_address", "formatted_phone_number", "geometry"],
@@ -26,14 +26,24 @@ export const getBusinessDetails = (placeId: string, map: google.maps.Map) => {
       const photoLink = photo[0].getUrl();
       const placeType = type[0];
 
-
+      const printwap: Printwap = {
+        photo: photoLink,
+        rating: "" + rating,
+        icon: icon,
+        name: name,
+        type: placeType,
+        website: website,
+        address: address,
+        phone_number: phone,
+      }
+      businessDetailsFn(printwap, placeId);
     }
   });
 }
 
 export interface Printwap {
   photo: string | undefined,
-  rating: number | undefined,
+  rating: string | undefined,
   icon: string | undefined,
   name: string | undefined,
   type: string | undefined,
@@ -42,23 +52,21 @@ export interface Printwap {
   phone_number: string | undefined
 }
 
-export const getPlaceIdFromQuery = async (query: string, map: google.maps.Map): Promise<string | null> => {
+export const getPlaceIdFromQuery = (query: string, map: google.maps.Map, placeIdFn: (placeId: string) => void): void => {
   const request = {
     query: query,
     fields: ["place_id"],
   };
-  let placeId = null;
+
   let service = new google.maps.places.PlacesService(map);
-  await service.findPlaceFromQuery(request, (results, status) => {
+
+  service.findPlaceFromQuery(request, (results, status) => {
     if (status === google.maps.places.PlacesServiceStatus.OK && results) {
-      console.log(results[0].place_id);
       if (!results[0].place_id) {
-        return;
+        return null;
       }
-      placeId = results[0].place_id;
-      return;
+      let placeId = results[0].place_id;
+      placeIdFn(placeId);
     }
   });
-
-  return placeId;
 }

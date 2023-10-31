@@ -1,6 +1,7 @@
 import { Account, Address, Business } from "@/types/database_types";
 import { Database } from "@/types/supabase";
 import { SupabaseClient, createClient } from "@supabase/supabase-js";
+import { Printwap } from "./places";
 
 export const supabaseClient = async (
   supabaseAccessToken: string
@@ -65,12 +66,13 @@ export const createAddress = async (
   lat: number,
   lng: number,
   address: string,
-  iconURL: string | undefined
+  iconURL: string | undefined,
+  placeId: string | undefined,
 ): Promise<Address | null> => {
   try {
     const { data, error, status } = await supabase
       .from("addresses")
-      .insert({ lat: lat, lng: lng, address: address, icon_url: iconURL });
+      .insert({ lat: lat, lng: lng, address: address, icon_url: iconURL, placeId: placeId });
 
     if (error && status !== 406) {
       throw error;
@@ -170,4 +172,37 @@ export const getAllBusinesses = async (
     alert(`${error} in matchAddress()`);
   }
   return null;
+}
+
+export const createBusiness = async (
+  supabase: SupabaseClient<Database>,
+  printwap: Printwap,
+  addressId: number,
+  placeId: string
+) => {
+  try {
+    const { data, error, status } = await supabase
+      .from("business")
+      .insert({
+        address_id: addressId,
+        name: printwap.name,
+        phone_number: printwap.phone_number,
+        picture: printwap.photo,
+        rating: printwap.rating,
+        type: printwap.type,
+        website: printwap.website,
+        placeId: placeId
+      })
+
+    if (error && status !== 406) {
+      throw error;
+    }
+
+    console.log("AJAJAJ");
+
+    return data;
+
+  } catch (error) {
+    alert(`${error} in insertBusiness()`);
+  }
 }
