@@ -22,7 +22,7 @@ const AddBusinessForm = ({ onSubmit }: AddBusinessFormProps) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      address: "",
+      address: "", name: "",
     }
   })
 
